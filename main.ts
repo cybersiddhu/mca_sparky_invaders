@@ -136,7 +136,7 @@ e e e e e e 2 2 4 4 4 5 4 4 2 2
 e e e e e e 2 2 4 4 4 4 5 4 2 2 
 `, SpriteKindLegacy.Player)
     Sparky.setPosition(80, 108)
-    controller.moveSprite(Sparky, 100, 0)
+    controller.moveSprite(Sparky, 200, 0)
     Sparky.setFlag(SpriteFlag.StayInScreen, true)
     info.setLife(3)
 }
