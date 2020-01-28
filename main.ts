@@ -65,8 +65,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 . . . . 5 . . . 
 . . . 5 . . . . 
 `, Sparky, 0, -100)
-    music.playTone(988, music.beat(BeatFraction.Sixteenth))
-    music.playTone(932, music.beat(BeatFraction.Sixteenth))
+    music.playTone(523, music.beat(BeatFraction.Quarter))
+    music.playTone(440, music.beat(BeatFraction.Quarter))
 })
 // Animate the enemy Chips.
 function chipAnim () {
