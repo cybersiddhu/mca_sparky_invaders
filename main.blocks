@@ -1,0 +1,138 @@
+<xml xmlns="https://developers.google.com/blockly/xml"><variables><variable type="SpriteKindLegacy" id="SIt)ZkjMa{m~{R.^br=4">0Player</variable><variable type="SpriteKindLegacy" id="Z]+fqfn:sVN8#2t(?c)!">1Projectile</variable><variable type="SpriteKindLegacy" id="A[k:*}*,m1LLp:4tVByr">2Food</variable><variable type="SpriteKindLegacy" id="F(fc1^~n%G/s9KKg?oyC">3Enemy</variable><variable id="GLk*gC)I!v,wFd+@dtul">ESD</variable><variable id=",yKjiVf.[ly#)NvG,GRs">Sparky</variable><variable id="InG+}M?]_M1j7#[T5VjT">projectile</variable><variable id="CkF845vK=|?!nxth]Uz7">mySprite</variable><variable id="Q*3GdhP4~;ui`/gU8f@_">Chip</variable><variable id="xmx{0r~Ha:@,~LXG[LA%">item</variable><variable id="IeE7b0PySdk=Co*g-_|X">shotFired</variable><variable id="3!vH)NZnI1?CYBU8;X|k">anim</variable><variable type="ActionKind" id="%HLX/+lK`T|3O:asg56c">0Walking</variable><variable type="ActionKind" id="uz!Zy;0Gk~T~ohIBlB7F">1Idle</variable><variable type="ActionKind" id="$-}Ey$(}jLGfY6dS0oo@">2Jumping</variable></variables><block type="pxt-on-start" x="20" y="20"><comment id="undefined" pinned="false" h="120" w="160">Initial game setup.</comment><statement name="HANDLER"><block type="particlesStartScreenAnimation"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="true"></mutation><field name="effect">effects.starField</field><value name="duration"><shadow type="timePicker"><field name="ms">500</field></shadow></value><next><block type="function_call"><mutation name="SparkySetup" functionid="oyzf6Ck|7/-)4P@9gx.*"/><next><block type="function_call"><mutation name="tileMapSetup" functionid="BpC);n}G=Me7qD/.hhGZ"/><next><block type="variables_set"><field name="VAR" id="IeE7b0PySdk=Co*g-_|X">shotFired</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="logic_boolean"><field name="BOOL">FALSE</field></block></value></block></next></block></next></block></next></block></statement></block><block type="function_definition" x="409" y="36"><mutation name="SparkySetup" functionid="oyzf6Ck|7/-)4P@9gx.*"/><field name="function_name">SparkySetup</field><comment id="undefined" pinned="false" h="120" w="160">Create the Sparky player.</comment><statement name="STACK"><block type="variables_set"><field name="VAR" id=",yKjiVf.[ly#)NvG,GRs">Sparky</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="spritescreate"><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. 6 6 . . . . . . . . 
+. . 6 6 . . . . . . . 
+. . 6 6 6 . . . . 6 . 
+. . 6 6 6 . . . 6 . . 
+. . 6 6 6 6 . 6 6 . . 
+. 6 6 6 6 6 6 6 6 . . 
+. 6 6 6 6 6 6 6 6 6 . 
+. 6 6 6 6 6 6 6 6 6 . 
+6 1 1 9 6 6 6 9 1 1 6 
+6 6 1 8 1 6 1 8 1 6 6 
+6 6 6 8 6 6 6 8 6 6 6 
+6 6 6 6 6 6 6 6 6 6 6 
+6 6 6 1 6 1 6 1 6 6 6 
+. 6 1 6 1 6 1 6 1 6 . 
+. . 6 6 6 6 6 6 6 . . 
+. . . 6 6 6 6 6 . . . 
+`</field></shadow></value><value name="kind"><shadow type="spritetype"><field name="MEMBER">Player</field></shadow></value></block></value><next><block type="spritesetpos"><value name="sprite"><block type="variables_get"><field name="VAR" id=",yKjiVf.[ly#)NvG,GRs">Sparky</field></block></value><value name="x"><shadow type="positionPicker"><field name="index">80</field></shadow></value><value name="y"><shadow type="positionPicker"><field name="index">108</field></shadow></value><next><block type="game_control_sprite"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="2" _input_init="true"></mutation><value name="sprite"><shadow type="variables_get"><field name="VAR" id=",yKjiVf.[ly#)NvG,GRs">Sparky</field></shadow></value><value name="vx"><shadow type="math_number"><field name="NUM">100</field></shadow></value><value name="vy"><shadow type="math_number"><field name="NUM">0</field></shadow></value><next><block type="spritesetsetflag"><field name="flag">SpriteFlag.StayInScreen</field><value name="sprite"><block type="variables_get"><field name="VAR" id=",yKjiVf.[ly#)NvG,GRs">Sparky</field></block></value><value name="on"><shadow type="toggleOnOff"><field name="on">true</field></shadow></value><next><block type="hudSetLife"><value name="value"><shadow type="math_number"><field name="NUM">3</field></shadow></value></block></next></block></next></block></next></block></next></block></statement></block><block type="gameinterval" x="948" y="20"><comment id="undefined" pinned="false" h="120" w="181">Periodically create each wave of enemy Chips.</comment><value name="period"><shadow type="timePicker"><field name="ms">3500</field></shadow></value><statement name="HANDLER"><block type="variables_set"><field name="VAR" id="Q*3GdhP4~;ui`/gU8f@_">Chip</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="spritescreateprojectilefromside"><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. 1 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+1 b b b b b b b b b b b b b 1 . 
+1 b b b b b b b b b b b b b 1 . 
+1 b b b b b b b b b b b b b 1 . 
+1 b b b b b b b b b b b b b 1 . 
+1 b c b b b b b b b b b b b 1 . 
+1 b b b b b b b b b b b b b 1 . 
+. 1 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="vx"><shadow type="spriteSpeedPicker"><field name="speed">2</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker"><field name="speed">10</field></shadow></value></block></value><next><block type="spritesetkind"><value name="sprite"><block type="variables_get"><field name="VAR" id="Q*3GdhP4~;ui`/gU8f@_">Chip</field></block></value><value name="kind"><shadow type="spritetype"><field name="MEMBER">3Enemy</field></shadow></value><next><block type="Sprite_blockCombine_set"><field name="property">Sprite.x@set</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="Q*3GdhP4~;ui`/gU8f@_">Chip</field></block></value><value name="value"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="device_random"><value name="min"><shadow type="math_number"><field name="NUM">0</field></shadow></value><value name="limit"><shadow type="math_number"><field name="NUM">49</field></shadow></value></block></value><next><block type="function_call"><mutation name="chipAnim" functionid=")UEyr-yeXp7sl`)L]{HN"/><next><block type="variables_set"><field name="VAR" id="Q*3GdhP4~;ui`/gU8f@_">Chip</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="spritescreateprojectilefromside"><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. 1 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+1 b b b b b b b b b b b b b 1 . 
+1 b b b b b b b b b b b b b 1 . 
+1 b b b b b b b b b b b b b 1 . 
+1 b b b b b b b b b b b b b 1 . 
+1 b c b b b b b b b b b b b 1 . 
+1 b b b b b b b b b b b b b 1 . 
+. 1 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="vx"><shadow type="spriteSpeedPicker"><field name="speed">2</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker"><field name="speed">10</field></shadow></value></block></value><next><block type="spritesetkind"><value name="sprite"><block type="variables_get"><field name="VAR" id="Q*3GdhP4~;ui`/gU8f@_">Chip</field></block></value><value name="kind"><shadow type="spritetype"><field name="MEMBER">3Enemy</field></shadow></value><next><block type="Sprite_blockCombine_set"><field name="property">Sprite.x@set</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="Q*3GdhP4~;ui`/gU8f@_">Chip</field></block></value><value name="value"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="device_random"><value name="min"><shadow type="math_number"><field name="NUM">66</field></shadow></value><value name="limit"><shadow type="math_number"><field name="NUM">91</field></shadow></value></block></value><next><block type="function_call"><mutation name="chipAnim" functionid=")UEyr-yeXp7sl`)L]{HN"/><next><block type="variables_set"><field name="VAR" id="Q*3GdhP4~;ui`/gU8f@_">Chip</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="spritescreateprojectilefromside"><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. 1 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+1 b b b b b b b b b b b b b 1 . 
+1 b b b b b b b b b b b b b 1 . 
+1 b b b b b b b b b b b b b 1 . 
+1 b b b b b b b b b b b b b 1 . 
+1 b c b b b b b b b b b b b 1 . 
+1 b b b b b b b b b b b b b 1 . 
+. 1 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="vx"><shadow type="spriteSpeedPicker"><field name="speed">2</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker"><field name="speed">10</field></shadow></value></block></value><next><block type="spritesetkind"><value name="sprite"><block type="variables_get"><field name="VAR" id="Q*3GdhP4~;ui`/gU8f@_">Chip</field></block></value><value name="kind"><shadow type="spritetype"><field name="MEMBER">3Enemy</field></shadow></value><next><block type="Sprite_blockCombine_set"><field name="property">Sprite.x@set</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="Q*3GdhP4~;ui`/gU8f@_">Chip</field></block></value><value name="value"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="device_random"><value name="min"><shadow type="math_number"><field name="NUM">110</field></shadow></value><value name="limit"><shadow type="math_number"><field name="NUM">152</field></shadow></value></block></value><next><block type="function_call"><mutation name="chipAnim" functionid=")UEyr-yeXp7sl`)L]{HN"/></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block><block type="function_definition" x="1612" y="36"><mutation name="tileMapSetup" functionid="BpC);n}G=Me7qD/.hhGZ"/><field name="function_name">tileMapSetup</field><comment id="undefined" pinned="false" h="120" w="160">Place barrier walls.</comment><statement name="STACK"><block type="gamesettilemap"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="false"></mutation><value name="map"><shadow type="tilemap_image_picker"><field name="img">img`
+. . . . . . . . . . 
+. . . . . . . . . . 
+. . . . . . . . . . 
+. . . . . . . . . . 
+. . . . . . . . . . 
+. . 7 . . . 7 . . . 
+. . . . . . . . . . 
+. . . . . . . . . . 
+`</field></shadow></value><next><block type="gamesettile"><value name="index"><shadow type="colorindexpicker"><field name="index">7</field></shadow></value><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+5 5 5 b a a a a 5 5 5 b a a a a 
+b 5 5 5 b a a a b 5 5 5 b a a a 
+a b 5 5 5 b a a a b 5 5 5 b a a 
+a a b 5 5 5 b a a a b 5 5 5 b a 
+a a a b 5 5 5 b a a a b 5 5 5 b 
+a a a a b 5 5 5 a a a a b 5 5 5 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="wall"><shadow type="toggleOnOff"><field name="on">true</field></shadow></value></block></next></block></statement></block><block type="keyonevent" x="2067" y="20"><field name="button">controller.A</field><field name="event">ControllerButtonEvent.Pressed</field><statement name="HANDLER"><block type="controls_if"><comment id="undefined" pinned="false" h="126" w="182">Check the shotFired state to see if a new one can be fired.</comment><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_negate"><value name="BOOL"><block type="variables_get"><field name="VAR" id="IeE7b0PySdk=Co*g-_|X">shotFired</field></block></value></block></value><statement name="DO0"><block type="variables_set"><field name="VAR" id="GLk*gC)I!v,wFd+@dtul">ESD</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="spritescreateprojectilefromsprite"><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . 5 . . . . 
+. . . 5 . . . . 
+. . . . 5 . . . 
+. . . 5 . . . . 
+. . 5 . . . . . 
+. . . 5 . . . . 
+. . . . 5 . . . 
+. . . 5 . . . . 
+`</field></shadow></value><value name="sprite"><shadow type="variables_get"><field name="VAR" id=",yKjiVf.[ly#)NvG,GRs">Sparky</field></shadow></value><value name="vx"><shadow type="spriteSpeedPicker"><field name="speed">0</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker"><field name="speed">-100</field></shadow></value></block></value><next><block type="mixer_play_note"><value name="note"><shadow type="device_note"><field name="note">988</field></shadow></value><value name="duration"><shadow type="device_beat"><field name="fraction">BeatFraction.Sixteenth</field></shadow></value><next><block type="mixer_play_note"><value name="note"><shadow type="device_note"><field name="note">932</field></shadow></value><value name="duration"><shadow type="device_beat"><field name="fraction">BeatFraction.Sixteenth</field></shadow></value><next><block type="variables_set"><field name="VAR" id="IeE7b0PySdk=Co*g-_|X">shotFired</field><value name="VALUE"><shadow type="math_number"><field name="NUM">1</field></shadow><block type="logic_boolean"><field name="BOOL">TRUE</field></block></value></block></next></block></next></block></next></block></statement></block></statement></block><block type="function_definition" x="20" y="791"><mutation name="chipAnim" functionid=")UEyr-yeXp7sl`)L]{HN"/><field name="function_name">chipAnim</field><comment id="undefined" pinned="false" h="120" w="160">Animate the enemy Chips.</comment><statement name="STACK"><block type="variables_set"><field name="VAR" id="3!vH)NZnI1?CYBU8;X|k">anim</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="createAnimation"><value name="action"><shadow type="action_enum_shim"><field name="MEMBER">1Idle</field></shadow></value><value name="interval"><shadow type="math_number"><field name="NUM">250</field></shadow></value></block></value><next><block type="addAnimationFrame"><value name="frame"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+d d d d d d d d d d d d d d d . 
+d b b b b b b b b b b b b b d . 
+d b b b b b b b b b b b b b d . 
+d b b b b b b b b b b b b b d . 
+d b b b b b b b b b b b b b d . 
+d b c b b b b b b b b b b b d . 
+d b b b b b b b b b b b b b d . 
+d d d d d d d d d d d d d d d . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="this"><block type="variables_get"><field name="VAR" id="3!vH)NZnI1?CYBU8;X|k">anim</field></block></value><next><block type="addAnimationFrame"><value name="frame"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+1 . 1 . 1 . 1 . 1 . 1 . 1 . . . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+d d d d d d d d d d d d d d d . 
+d b b b b b b b b b b b b b d . 
+d b b b b b b b b b b b b b d . 
+d b b b b b b b b b b b b b d . 
+d b b b b b b b b b b b b b d . 
+d b c b b b b b b b b b b b d . 
+d b b b b b b b b b b b b b d . 
+d d d d d d d d d d d d d d d . 
+. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
+1 . 1 . 1 . 1 . 1 . 1 . 1 . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="this"><block type="variables_get"><field name="VAR" id="3!vH)NZnI1?CYBU8;X|k">anim</field></block></value><next><block type="attachAnimation"><value name="set"><block type="variables_get"><field name="VAR" id="3!vH)NZnI1?CYBU8;X|k">anim</field></block></value><value name="sprite"><block type="variables_get"><field name="VAR" id="Q*3GdhP4~;ui`/gU8f@_">Chip</field></block></value><next><block type="setAction"><value name="action"><shadow type="action_enum_shim"><field name="MEMBER">1Idle</field></shadow></value><value name="sprite"><block type="variables_get"><field name="VAR" id="Q*3GdhP4~;ui`/gU8f@_">Chip</field></block></value></block></next></block></next></block></next></block></next></block></statement></block><block type="spritesondestroyed" x="686" y="775"><comment id="undefined" pinned="false" h="127" w="256">When Ruby's projectile hits something, flip the variable's state so another can be fired.</comment><value name="HANDLER_DRAG_PARAM_sprite"><shadow type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></shadow></value><value name="kind"><shadow type="spritetype"><field name="MEMBER">1Projectile</field></shadow></value><statement name="HANDLER"><block type="variables_set"><field name="VAR" id="IeE7b0PySdk=Co*g-_|X">shotFired</field><value name="VALUE"><shadow type="math_number"><field name="NUM">1</field></shadow><block type="logic_boolean"><field name="BOOL">FALSE</field></block></value></block></statement></block><block type="spritesollisions" x="1149" y="775"><comment id="undefined" pinned="false" h="120" w="160">An enemy Chip hits a barrier.</comment><value name="HANDLER_DRAG_PARAM_sprite"><shadow type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></shadow></value><value name="kind"><shadow type="spritetype"><field name="MEMBER">3Enemy</field></shadow></value><value name="tile"><shadow type="colorindexpicker"><field name="index">7</field></shadow></value><statement name="HANDLER"><block type="hudChangeScoreBy"><value name="value"><shadow type="math_number"><field name="NUM">-50</field></shadow></value><next><block type="startEffectOnSprite"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="1" _input_init="true"></mutation><field name="effect">effects.warmRadial</field><value name="sprite"><block type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></block></value><value name="duration"><shadow type="timePicker"><field name="ms">100</field></shadow></value></block></next></block></statement></block><block type="spritesoverlap" x="1741" y="775"><comment id="undefined" pinned="false" h="120" w="160">An enemy Chip has been shot.</comment><value name="HANDLER_DRAG_PARAM_sprite"><shadow type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></shadow></value><value name="kind"><shadow type="spritetype"><field name="MEMBER">1Projectile</field></shadow></value><value name="HANDLER_DRAG_PARAM_otherSprite"><shadow type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">otherSprite</field></shadow></value><value name="otherKind"><shadow type="spritetype"><field name="MEMBER">3Enemy</field></shadow></value><statement name="HANDLER"><block type="spritedestroy"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="2" _input_init="true"></mutation><field name="effect">effects.fire</field><value name="sprite"><block type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">otherSprite</field></block></value><value name="duration"><shadow type="timePicker"><field name="ms">100</field></shadow></value><next><block type="spritedestroy"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="true"></mutation><field name="effect">effects.fire</field><value name="sprite"><block type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></block></value><value name="duration"><shadow type="timePicker"><field name="ms">200</field></shadow></value><next><block type="hudChangeScoreBy"><value name="value"><shadow type="math_number"><field name="NUM">100</field></shadow></value><next><block type="mixer_play_note"><value name="note"><shadow type="device_note"><field name="note">208</field></shadow></value><value name="duration"><shadow type="device_beat"><field name="fraction">BeatFraction.Quarter</field></shadow></value><next><block type="mixer_play_note"><value name="note"><shadow type="device_note"><field name="note">175</field></shadow></value><value name="duration"><shadow type="device_beat"><field name="fraction">BeatFraction.Quarter</field></shadow></value></block></next></block></next></block></next></block></next></block></statement></block><block type="spritesoverlap" x="20" y="1160"><comment id="undefined" pinned="false" h="120" w="160">Sparky has been hit by an enemy Chip.</comment><value name="HANDLER_DRAG_PARAM_sprite"><shadow type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></shadow></value><value name="kind"><shadow type="spritetype"><field name="MEMBER">0Player</field></shadow></value><value name="HANDLER_DRAG_PARAM_otherSprite"><shadow type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">otherSprite</field></shadow></value><value name="otherKind"><shadow type="spritetype"><field name="MEMBER">3Enemy</field></shadow></value><statement name="HANDLER"><block type="spritedestroy"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="2" _input_init="true"></mutation><field name="effect">effects.ashes</field><value name="sprite"><block type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">otherSprite</field></block></value><value name="duration"><shadow type="timePicker"><field name="ms">200</field></shadow></value><next><block type="hudChangeLifeBy"><value name="value"><shadow type="math_number"><field name="NUM">-1</field></shadow></value><next><block type="mixer_play_note"><value name="note"><shadow type="device_note"><field name="note">131</field></shadow></value><value name="duration"><shadow type="device_beat"><field name="fraction">BeatFraction.Sixteenth</field></shadow></value><next><block type="mixer_play_note"><value name="note"><shadow type="device_note"><field name="note">139</field></shadow></value><value name="duration"><shadow type="device_beat"><field name="fraction">BeatFraction.Sixteenth</field></shadow></value><next><block type="mixer_play_note"><value name="note"><shadow type="device_note"><field name="note">131</field></shadow></value><value name="duration"><shadow type="device_beat"><field name="fraction">BeatFraction.Sixteenth</field></shadow></value><next><block type="mixer_play_note"><value name="note"><shadow type="device_note"><field name="note">139</field></shadow></value><value name="duration"><shadow type="device_beat"><field name="fraction">BeatFraction.Sixteenth</field></shadow></value></block></next></block></next></block></next></block></next></block></next></block></statement></block></xml>
