@@ -181,7 +181,7 @@ game.onUpdateInterval(1500, function () {
 . 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
-`, 2, 10)
+`, 2, 20)
     Chip.setKind(SpriteKindLegacy.Enemy)
     Chip.x = Math.randomRange(0, 152)
     chipAnim()
