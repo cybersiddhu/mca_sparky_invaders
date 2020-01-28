@@ -163,7 +163,7 @@ SparkySetup()
 tileMapSetup()
 shotFired = false
 // Periodically create each wave of enemy Chips.
-game.onUpdateInterval(3500, function () {
+game.onUpdateInterval(1500, function () {
     Chip = sprites.createProjectileFromSide(img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
@@ -183,48 +183,6 @@ game.onUpdateInterval(3500, function () {
 . . . . . . . . . . . . . . . . 
 `, 2, 10)
     Chip.setKind(SpriteKindLegacy.Enemy)
-    Chip.x = Math.randomRange(0, 49)
-    chipAnim()
-    Chip = sprites.createProjectileFromSide(img`
-. . . . . . . . . . . . . . . . 
-. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
-. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
-. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
-. 1 1 1 1 1 1 1 1 1 1 1 1 1 . . 
-1 b b b b b b b b b b b b b 1 . 
-1 b b b b b b b b b b b b b 1 . 
-1 b b b b b b b b b b b b b 1 . 
-1 b b b b b b b b b b b b b 1 . 
-1 b c b b b b b b b b b b b 1 . 
-1 b b b b b b b b b b b b b 1 . 
-. 1 1 1 1 1 1 1 1 1 1 1 1 1 . . 
-. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
-. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
-. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
-. . . . . . . . . . . . . . . . 
-`, 2, 10)
-    Chip.setKind(SpriteKindLegacy.Enemy)
-    Chip.x = Math.randomRange(66, 91)
-    chipAnim()
-    Chip = sprites.createProjectileFromSide(img`
-. . . . . . . . . . . . . . . . 
-. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
-. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
-. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
-. 1 1 1 1 1 1 1 1 1 1 1 1 1 . . 
-1 b b b b b b b b b b b b b 1 . 
-1 b b b b b b b b b b b b b 1 . 
-1 b b b b b b b b b b b b b 1 . 
-1 b b b b b b b b b b b b b 1 . 
-1 b c b b b b b b b b b b b 1 . 
-1 b b b b b b b b b b b b b 1 . 
-. 1 1 1 1 1 1 1 1 1 1 1 1 1 . . 
-. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
-. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
-. 1 . 1 . 1 . 1 . 1 . 1 . 1 . . 
-. . . . . . . . . . . . . . . . 
-`, 2, 10)
-    Chip.setKind(SpriteKindLegacy.Enemy)
-    Chip.x = Math.randomRange(110, 152)
+    Chip.x = Math.randomRange(0, 152)
     chipAnim()
 })
