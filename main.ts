@@ -55,10 +55,7 @@ scene.onHitTile(SpriteKindLegacy.Enemy, 7, function (sprite) {
     sprite.startEffect(effects.warmRadial, 100)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    // Check the shotFired state to see if a new one can
-    // be fired.
-    if (!(shotFired)) {
-        ESD = sprites.createProjectileFromSprite(img`
+    ESD = sprites.createProjectileFromSprite(img`
 . . . 5 . . . . 
 . . . 5 . . . . 
 . . . . 5 . . . 
@@ -68,10 +65,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 . . . . 5 . . . 
 . . . 5 . . . . 
 `, Sparky, 0, -100)
-        music.playTone(988, music.beat(BeatFraction.Sixteenth))
-        music.playTone(932, music.beat(BeatFraction.Sixteenth))
-        shotFired = true
-    }
+    music.playTone(988, music.beat(BeatFraction.Sixteenth))
+    music.playTone(932, music.beat(BeatFraction.Sixteenth))
 })
 // Animate the enemy Chips.
 function chipAnim () {
@@ -138,7 +133,7 @@ e e e e e e 2 2 4 4 4 4 5 4 2 2
     Sparky.setPosition(80, 108)
     controller.moveSprite(Sparky, 200, 0)
     Sparky.setFlag(SpriteFlag.StayInScreen, true)
-    info.setLife(3)
+    info.setLife(4)
 }
 // An enemy Chip has been shot.
 sprites.onOverlap(SpriteKindLegacy.Projectile, SpriteKindLegacy.Enemy, function (sprite, otherSprite) {
