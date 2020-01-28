@@ -143,20 +143,13 @@ sprites.onOverlap(SpriteKindLegacy.Projectile, SpriteKindLegacy.Enemy, function 
     music.playTone(208, music.beat(BeatFraction.Quarter))
     music.playTone(175, music.beat(BeatFraction.Quarter))
 })
-// When Ruby's projectile hits something, flip the
-// variable's state so another can be fired.
-sprites.onDestroyed(SpriteKindLegacy.Projectile, function (sprite) {
-    shotFired = false
-})
 let Chip: Sprite = null
 let anim: animation.Animation = null
 let Sparky: Sprite = null
 let ESD: Sprite = null
-let shotFired = false
 effects.starField.startScreenEffect()
 SparkySetup()
 tileMapSetup()
-shotFired = false
 // Periodically create each wave of enemy Chips.
 game.onUpdateInterval(1500, function () {
     Chip = sprites.createProjectileFromSide(img`
